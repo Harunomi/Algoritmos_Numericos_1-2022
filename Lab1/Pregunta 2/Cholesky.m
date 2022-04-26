@@ -1,4 +1,4 @@
-function resultado = Cholesky(A,b)
+function [resultado,error] = Cholesky(A,b)
 
 [n,m] = size(A);
 U = zeros(n,n);
@@ -13,4 +13,5 @@ end
 L = U';
 
 z = inv(L)*b;
-resultado = inv(U)*z;
+resultado = inv(U)*z; % X 
+error = norm(A*resultado - b);

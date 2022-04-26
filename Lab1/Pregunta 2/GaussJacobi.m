@@ -1,4 +1,4 @@
-function [X,iteracion]=GaussJacobi(A,b,x0,iter)
+function [X,iteracion, error]=GaussJacobi(A,b,x0,iter)
    X=[];
    [columnas filas]=size(A);
    if (columnas~=size(x0))|(columnas~=size(b))
@@ -41,5 +41,8 @@ function [X,iteracion]=GaussJacobi(A,b,x0,iter)
            iteracion=iteracion+1;
         end
       X=[X; x(iteracion,:)];
+      X = X(iteracion,:);
+      X = X';
    end
+   error = norm(A*X-b);
 end

@@ -1,4 +1,4 @@
-function raiz = LU(A,b)
+function [raiz,L,U, error] = LU(A,b)
       [columnas filas]=size(A);
       if columnas~=filas
          error('La matriz no es cuadrada');
@@ -34,4 +34,5 @@ function raiz = LU(A,b)
    matrizB = b';
    z = inv(L)*matrizB;
    raiz = inv(U)*z;
+   error = norm(A*raiz-b);
 end

@@ -1,4 +1,4 @@
-function [X] = QR(A, b)
+function [X,error] = QR(A, b)
 X=[];
 [m, n] = size(A);
 if m < n
@@ -17,3 +17,4 @@ for i = 1:n
     end
 end
 X=inv(R)*Q'*b;
+error = norm(A*X-b);

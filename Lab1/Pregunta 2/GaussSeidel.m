@@ -1,4 +1,4 @@
-function [X,iteracion]=GaussSeidel(A,b,x0,iter)
+function [X,iteracion, error]=GaussSeidel(A,b,x0,iter)
       X = [];  
       [cols filas]=size(A);
       if cols~=filas
@@ -46,6 +46,9 @@ function [X,iteracion]=GaussSeidel(A,b,x0,iter)
             X=[X; x(iteracion,:)];
          end
       end
+      X = X(iteracion,:);
+      X = X';
+      error = norm(A*X-b);
 end
 
 
