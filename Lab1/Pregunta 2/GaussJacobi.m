@@ -1,4 +1,4 @@
-function [X,iteracion, error]=GaussJacobi(A,b,x0,iter)
+function [X, error]=GaussJacobi(A,b,x0,iter)
    X=[];
    [columnas filas]=size(A);
    if (columnas~=size(x0))|(columnas~=size(b))

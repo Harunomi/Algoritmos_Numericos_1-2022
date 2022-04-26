@@ -1,4 +1,4 @@
-function [X,iteracion, error]=GaussSeidel(A,b,x0,iter)
+function [X, error]=GaussSeidel(A,b,x0,iter)
       X = [];  
       [cols filas]=size(A);
       if cols~=filas

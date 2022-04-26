@@ -16,5 +16,5 @@ for i = 1:n
        V(:,j) = V(:,j) - R(i,j)*Q(:,i);
     end
 end
-X=inv(R)*Q'*b;
+X=R\Q'*b;
 error = norm(A*X-b);

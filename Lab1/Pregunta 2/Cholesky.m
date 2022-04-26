@@ -12,6 +12,6 @@ for i = 1 : n
 end
 L = U';
 
-z = inv(L)*b;
-resultado = inv(U)*z; % X 
+z = L\b;
+resultado = U\z; % X 
 error = norm(A*resultado - b);
