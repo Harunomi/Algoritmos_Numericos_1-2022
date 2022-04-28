@@ -1,4 +1,5 @@
-function [X, error, tiempo] = LSQR(A, b, tol, iterMax)
+function [X, error,contador] = LSQR(A, b, tol, iterMax)
+contador = 0;
 beta = norm(b);
 u = b/beta;
 alfa = norm(A'*u);
@@ -8,6 +9,7 @@ n = length(A);
 X = zeros(n,1);
 phi_barra = beta;
 rho_barra = alfa;
+contador = contador + 28;
 for k = 1:iterMax
     beta = norm(A*v - alfa*u);
     u = (A*v - alfa*u) / beta;
@@ -23,8 +25,8 @@ for k = 1:iterMax
     X = X + (phi/rho)*w;
     w = v - (theta/rho)*w;
     error = norm(A*X-b);
+    contador = contador + 82;
     if error < tol
-        tiempo = tiempo + toc;
         return
     end
 end

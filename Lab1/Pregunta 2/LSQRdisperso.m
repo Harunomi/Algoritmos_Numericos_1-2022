@@ -1,8 +1,7 @@
-function [X, error, tiempo] = LSQRdisperso(A, b, tol, iterMax)
+function [X, error,contador] = LSQRdisperso(A, b, tol, iterMax)
+contador = 0;
 A = sparse(A);
 b = sparse(b);
-tiempo = 0;
-tic;
 beta = norm(b);
 u = b/beta;
 alfa = norm(A'*u);
@@ -12,6 +11,7 @@ n = length(A);
 X = zeros(n,1);
 phi_barra = beta;
 rho_barra = alfa;
+contador = contador + 28;
 for k = 1:iterMax
     beta = norm(A*v - alfa*u);
     u = (A*v - alfa*u) / beta;
@@ -27,9 +27,8 @@ for k = 1:iterMax
     X = X + (phi/rho)*w;
     w = v - (theta/rho)*w;
     error = norm(A*X-b);
+    contador = contador + 82;
     if error < tol
-        tiempo = tiempo + toc;
         return
     end
 end
-tiempo = tiempo + toc;
